@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>チャットモック</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        margin: 0;
+      }
+
+      /* bootstrapの謎の右の余白を消す */
+      #_wrap {
+        overflow: hidden;
+        background: #f7f7f7;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      main {
+        flex: 1;
+      }
+
+      section {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      aside {
+        width: 60%;
+      }
+
+      /* スマホ用 */
+      @media screen and (max-width: 768px) {
+        section {
+          width: 95%;
+        }
+
+        aside {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 992px) {
+        aside {
+          display: none;
+        }
+      }
+
+      .line-bc {
+        padding: 20px 10px;
+        max-width: 868px;
+        margin: 15px auto;
+        font-size: 14px;
+        background: #88b3f7;
+      }
+
+      /* 吹き出し左 */
+      .balloon1 {
+        position: relative;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #000;
+        color: #fff;
+        max-width: 250px;
+        font-size: 15px;
+        word-wrap: break-word;
+        margin-left: 10px;
+      }
+
+      /* 三角アイコン左 */
+      .balloon1::before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 3px;
+        left: -19px;
+        border: 8px solid transparent;
+        border-right: 18px solid #000;
+        -webkit-transform: rotate(35deg);
+        transform: rotate(35deg);
+      }
+
+      /* 吹き出し右 */
+      .balloon2 {
+        position: relative;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #30e852;
+        max-width: 250px;
+        font-size: 15px;
+        word-wrap: break-word;
+        margin-right: 20px;
+      }
+
+      /* 三角アイコン右 */
+      .balloon2::before {
+        content: '';
+        position: absolute;
+        top: 3px;
+        right: -19px;
+        border: 8px solid transparent;
+        border-left: 18px solid #30e852;
+        -webkit-transform: rotate(-35deg);
+        transform: rotate(-35deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div id="_wrap">
+        <!-- header -->
+        <header>
+          <h1 style="font-size: 20px">リアルタイムチャット</h1>
+          <p>接続ユーザ数: 10</p>
+        </header>
+        <!-- header -->
+
+        <!-- main -->
+        <main>
+          <div class="row">
+            <!-- article -->
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
+              <!-- section -->
+              <section>
+                <!-- 入力エリア -->
+                <div class="form-group">
+                  <textarea
+                    style="max-width: 400px; margin: 0 auto"
+                    class="form-control"
+                    id="textarea"
+                    placeholder="メッセージ 150文字以内"
+                    maxlength="150"
+                    rows="3"
+                  ></textarea>
+                </div>
+
+                <div class="text-center">
+                  <button class="btn btn-primary">投稿</button>
+                </div>
+                <!-- 入力エリア -->
+
+                <hr />
+
+                <!-- 投稿一覧 -->
+                <p>最新50件</p>
+
+                <!-- 左吹き出し -->
+                <div class="line-bc">
+                  <div>
+                    <div class="clearfix">
+                      <div class="balloon2 float-right">こんにちは</div>
+                    </div>
+                    <div class="clearfix">
+                      <div class="float-right">
+                        <time style="font-size: 12px">
+                          2020-12-19 09:26:35
+                        </time>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 左吹き出し -->
+
+                  <!-- 改行 -->
+                  <br />
+
+                  <!-- 右吹き出し -->
+                  <div>
+                    <div style="font-size: 12px; color: #fff">uid</div>
+                    <div class="clearfix">
+                      <div class="balloon1 float-left">
+                        <a
+                          href="https://chat-line.netlify.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >https://chat-line.netlify.app/</a
+                        >
+                      </div>
+                    </div>
+
+                    <div className="clearfix">
+                      <time style="font-size: 12px"> 2020-12-19 09:26:35 </time>
+                    </div>
+                  </div>
+                </div>
+                <!-- 右吹き出し -->
+              </section>
+              <!-- section -->
+            </article>
+            <!-- article -->
+
+            <!-- aside -->
+            <aside class="col-xs-0 col-sm-0 col-md-0 col-lg-3 col-xl-3">
+              <div class="card" style="width: 90%; height: 1000px">
+                広告スペース
+              </div>
+            </aside>
+            <!-- aside -->
+          </div>
+        </main>
+        <!-- main -->
+      </div>
+    </div>
+  </body>
+</html>
